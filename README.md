@@ -10,7 +10,7 @@ You can follow these simple instructions
 
 2. Open your terminal and navigate to the project directory using `cd`
 
-3. Run the bash script to automate the image building and running the application by executing `bash start.sh`
+3. Run the bash script to automate the image building and running the application by executing `bash start.sh` on the terminal
 
 ## Installing Create-React-App
 

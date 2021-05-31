@@ -121,7 +121,7 @@ function InPlay() {
               <Lottie
                 options={defaultOptions}
                 height={400}
-                width={400}
+                width="100%"
                 isStopped={false}
                 isPaused={false}
               />
@@ -134,7 +134,7 @@ function InPlay() {
             </span>
             <div className="flex flex-wrap flex-row">
               {choices.map((choice) => (
-                <div key={choice.id} className="m-10">
+                <div key={choice.id} className="my-10 m-auto">
                   <Choice
                     onClick={() => setPlayerSelection(choice.id)}
                     select={choice.id === playerSelection ? true : false}

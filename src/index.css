@@ -11,9 +11,15 @@ p {
   @apply text-black-500;
 }
 
-@media only screen and (max-width: 411px) {
+@media only screen and (max-width: 414px) {
   .react-slick-slider {
     width: 300px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .react-slick-slider {
+    width: 200px;
   }
 }
 

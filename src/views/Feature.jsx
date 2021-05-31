@@ -27,7 +27,7 @@ function Feature() {
         <Lottie
           options={defaultOptions}
           height={400}
-          width={400}
+          width="100%"
           isStopped={false}
           isPaused={false}
         />

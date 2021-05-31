@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Link as LinkScroll } from "react-scroll";
 
 import ButtonOutline from "./buttonOutline";
 import Logo from "../assets/images/logo.svg";
@@ -104,7 +103,7 @@ const Header = () => {
             >
               About
             </Link>
-            <LinkScroll
+            <Link
               activeClass="active"
               to="/feature"
               spy={true}
@@ -121,7 +120,7 @@ const Header = () => {
               }
             >
               Feature
-            </LinkScroll>
+            </Link>
             <Link
               activeClass="active"
               to="/pricing"
@@ -161,7 +160,9 @@ const Header = () => {
           </ul>
           <div className="col-start-10 col-end-12 font-medium flex justify-end items-center">
             {renderThemeModeButton()}
-            <ButtonOutline>Sign Up</ButtonOutline>
+            <Link to="/play">
+              <ButtonOutline>Sign Up</ButtonOutline>
+            </Link>
           </div>
         </nav>
       </header>

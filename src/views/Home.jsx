@@ -29,17 +29,16 @@ function Home() {
 
   function renderScores() {
     const users = (
-      <div className="flex flex-wrap flex-row mx-6">
+      <div className="flex flex-wrap my-24 flex-row justify-center">
         {scores ? (
           scores.map((item) => (
-            <div className="m-10">
-              <User
-                username={item.username}
-                player={item.player}
-                computer={item.computer}
-                results={item.results}
-              />
-            </div>
+            <User
+              addClass="my-10 mx-auto"
+              username={item.username}
+              player={item.player}
+              computer={item.computer}
+              results={item.results}
+            />
           ))
         ) : (
           <div className="m-10">

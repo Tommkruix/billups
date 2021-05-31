@@ -1,6 +1,6 @@
 const tokenKey = "token";
 
-export async function login(username, type) {
+export async function login(username) {
   localStorage.setItem(tokenKey, username);
 }
 

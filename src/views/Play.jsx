@@ -1,13 +1,14 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Joi from "joi-browser";
-import Form from "hoc/form";
+import { motion } from "framer-motion";
+
 import auth from "services/authService";
 import Card from "components/card";
+import Form from "hoc/form";
 
 class Play extends Form {
   state = {
-    data: { username: "", gameTypeId: "" },
+    data: { username: "" },
     gameTypes: [
       { _id: "1", name: "Single" },
       { _id: "2", name: "Multiple" },
@@ -22,7 +23,7 @@ class Play extends Form {
 
   doSubmit = () => {
     const { data } = this.state;
-    auth.login(data.username, data.gameTypeId);
+    auth.login(data.username);
 
     const { state } = this.props.location;
     window.location = state ? state.from.pathname : "/in-play";
@@ -42,21 +43,21 @@ class Play extends Form {
             Are you ready to take up the challenge ?
           </span>
           <form onSubmit={this.handleSubmit}>
-            <span className="block text-primary-500 my-28">
+            <span className="block text-primary-500 my-12">
               {this.renderInput(
                 "username",
                 "Please enter a username",
                 "fa fa-user"
               )}
             </span>
-            <span className="block text-primary-500  my-18">
+            <span className="block text-primary-500  my-12">
               {this.renderSelect(
                 "gameTypeId",
                 "Choose Game Type",
                 this.state.gameTypes
               )}
             </span>
-            <span className="block text-white-500 my-28">
+            <span className="block text-white-500 my-12">
               {this.renderButton("Click to Play!")}
             </span>
           </form>

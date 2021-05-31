@@ -12,6 +12,11 @@ You can follow these simple instructions
 
 3. Run the bash script to automate the image building and running the application by executing `bash start.sh` on the terminal
 
+Hurray! The landing page below should pop up
+
+<img src="/src/assets/images/ScreenShot.png" align="center"
+     alt="ScreenShot">
+
 ## Installing Create-React-App
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

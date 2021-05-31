@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Facebook from "../assets/images/facebook.svg";
 import Instagram from "../assets/images/instagram.svg";
@@ -10,7 +11,9 @@ const Footer = () => {
     <div className="bg-white-300 dark:bg-black-500 pt-44 pb-24">
       <div className="max-w-screen-xl w-full mx-auto px-6 sm:px-8 lg:px-16 grid grid-rows-6 sm:grid-rows-1 grid-flow-row sm:grid-flow-col grid-cols-3 sm:grid-cols-12 gap-4">
         <div className="row-span-2 sm:col-span-4 col-start-1 col-end-4 sm:col-end-5 flex flex-col items-start ">
-          <img src={Logo} alt="logo" className="h-8 w-auto mb-6" />
+          <Link to="/">
+            <img src={Logo} alt="logo" className="h-8 w-auto mb-6" />
+          </Link>
           <p className="mb-4 dark:text-gray-400">
             <strong className="font-medium">“The Big Bang Theory”</strong>{" "}
             called Rock, Paper, Scissors, Lizard, Spock.

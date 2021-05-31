@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Lottie from "react-lottie";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
-import Choice from "components/choice";
-import Card from "components/card";
-import {
-  getChoice,
-  getChoices,
-  playGame,
-  getRandomNumber,
-} from "../services/gameService";
-import ButtonPrimary from "components/buttonPrimary";
-import logger from "services/logService";
 import animationData from "../assets/lotties/congratulations.json";
+import ButtonPrimary from "components/buttonPrimary";
+import Card from "components/card";
+import Choice from "components/choice";
+import logger from "services/logService";
+import { getChoices, playGame, getRandomNumber } from "../services/gameService";
 import { getCurrentUser } from "services/authService";
 import { saveGame } from "services/systemService";
 
@@ -29,6 +24,7 @@ const defaultOptions = {
 
 function InPlay() {
   const [choices, setChoices] = useState([]);
+  const [playerSelection, setPlayerSelection] = useState(null);
   const [randomNumber, setRandomNumber] = useState(0);
   const [clicked, setClicked] = useState(false);
   const [isWin, setIsWin] = useState(false);
@@ -69,20 +65,24 @@ function InPlay() {
     setClicked(true);
 
     try {
-      const { data: selected } = await getChoice();
-      if (selected) {
-        let { data: game } = await playGame(selected);
+      if (playerSelection != null) {
+        let { data: game } = await playGame(playerSelection);
 
         game = { id: randomNumber, username: getCurrentUser(), ...game };
         saveGame(game);
 
+        if (game.results === "win") toast(`You Won! while Computer Lose!`);
+        if (game.results === "tie") toast(`You and Computer both Tie!`);
+        if (game.results === "lose") toast(`You Lose! while Computer Won!`);
+
         setIsWin(game.results === "win" ? true : false);
-        toast(`You ${capitalizeFirstLetter(game.results)}`);
+      } else {
+        toast.info(`You haven't made your selection yet!`);
       }
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast(ex.response.data);
-        //logger.log(ex.response.data);
+        logger.log(ex.response.data);
       }
     }
 
@@ -92,6 +92,8 @@ function InPlay() {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  if (choices.length === 0) return <Card>Loading...</Card>;
 
   return (
     <motion.div
@@ -128,18 +130,22 @@ function InPlay() {
         ) : (
           <>
             <span className="block text-center text-size- animate-bounce">
-              Guess Now! {capitalizeFirstLetter(getCurrentUser())}
+              It's time to play! {capitalizeFirstLetter(getCurrentUser())}
             </span>
             <div className="flex flex-wrap flex-row">
               {choices.map((choice) => (
                 <div key={choice.id} className="m-10">
-                  <Choice label={capitalizeFirstLetter(choice.name)} />
+                  <Choice
+                    onClick={() => setPlayerSelection(choice.id)}
+                    select={choice.id === playerSelection ? true : false}
+                    label={capitalizeFirstLetter(choice.name)}
+                  />
                 </div>
               ))}
             </div>
             <span className="block text-center my-10 text-base animate-bounce">
               <ButtonPrimary disabled={clicked} onClick={() => handlePlay()}>
-                {clicked ? "Checking Your Guess" : "Play"}
+                {clicked ? "Checking Who Wins..." : "Play"}
               </ButtonPrimary>
             </span>
           </>

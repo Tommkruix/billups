@@ -1,4 +1,5 @@
 import React from "react";
+
 import Alert from "./alert";
 
 function Input({ name, label, icon, error, ...otherProps }) {

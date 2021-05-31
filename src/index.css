@@ -10,7 +10,12 @@ body {
 p {
   @apply text-black-500;
 }
-/*  */
+
+@media only screen and (max-width: 411px) {
+  .react-slick-slider {
+    width: 300px;
+  }
+}
 
 @tailwind utilities;
 

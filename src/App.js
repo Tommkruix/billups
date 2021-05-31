@@ -6,18 +6,17 @@ import { ToastContainer } from "react-toastify";
 
 import About from "views/About";
 import Feature from "views/Feature";
-import Home from "views/Home";
-import NotFound from "views/NotFound";
-import Pricing from "views/Pricing";
-import useDarkMode from "hooks/useDarkMode";
-import Header from "components/header";
 import Footer from "components/footer";
-import Play from "views/Play";
+import Header from "components/header";
+import Home from "views/Home";
 import InPlay from "views/InPlay";
-import Result from "views/Result";
-import Testimonial from "views/Testimonial";
-import ProtectedRoute from "components/protectedRoute";
 import Logout from "views/Logout";
+import NotFound from "views/NotFound";
+import Play from "views/Play";
+import Pricing from "views/Pricing";
+import ProtectedRoute from "components/protectedRoute";
+import Testimonial from "views/Testimonial";
+import useDarkMode from "hooks/useDarkMode";
 
 function App() {
   useDarkMode();
@@ -32,7 +31,6 @@ function App() {
           <Route path="/play" component={Play} />
           <Route path="/logout" component={Logout} />
           <ProtectedRoute path="/in-play" component={InPlay} />
-          <ProtectedRoute path="/result" component={Result} />
           <Route path="/testimonial" component={Testimonial} />
           <Route path="/about" component={About} />
           <Route path="/pricing" component={Pricing} />

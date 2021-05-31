@@ -1,18 +1,81 @@
 import React from "react";
 import Typical from "react-typical";
+import Slider from "react-slick";
+import Particles from "react-particles-js";
+import { Link } from "react-router-dom";
 
 import ButtonPrimary from "./buttonPrimary";
-import VideoGame from "../assets/images/video_game.svg";
-import { Link } from "react-router-dom";
+import Slide1 from "../assets/images/slide1.svg";
+import Slide2 from "../assets/images/slide2.svg";
+import Slide3 from "../assets/images/slide3.svg";
+import Slide4 from "../assets/images/slide4.svg";
+import Slide5 from "../assets/images/slide5.svg";
 
 const time = 6000;
 
+const slides = [Slide1, Slide2, Slide3, Slide4, Slide5];
+
+const settings = {
+  dots: false,
+  nextArrow: <span></span>,
+  prevArrow: <span></span>,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  speed: 2000,
+  autoplaySpeed: 3000,
+  cssEase: "linear",
+  fade: true,
+};
+
 function Hero() {
+  function renderSlides() {
+    return slides.map((url, index) => (
+      <img
+        key={index}
+        src={url}
+        alt={url}
+        quality={100}
+        width={720}
+        height={600}
+        layout="responsive"
+      />
+    ));
+  }
+
   return (
     <>
       <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="about">
         <div className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16 ">
           <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
+            <Particles
+              params={{
+                particles: {
+                  number: {
+                    value: 150,
+                    density: {
+                      enable: true,
+                      value_area: 800,
+                    },
+                  },
+                  color: {
+                    value: "#0c9c81",
+                  },
+                  size: {
+                    value: 5,
+                  },
+                },
+                interactivity: {
+                  events: {
+                    onhover: {
+                      enable: true,
+                      mode: "repulse",
+                    },
+                  },
+                },
+              }}
+            />
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-medium text-black-600 leading-normal">
               Rock Paper Scissors Spock <strong>Lizard</strong>.
             </h1>
@@ -27,16 +90,12 @@ function Hero() {
               </Link>
             </div>
           </div>
+
           <div className="flex w-full">
             <div className="h-full w-full">
-              <img
-                src={VideoGame}
-                alt="Video Game"
-                quality={100}
-                width={720}
-                height={600}
-                layout="responsive"
-              />
+              <Slider className="react-slick-slider" {...settings}>
+                {renderSlides()}
+              </Slider>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo "Waiting for docker image to build with a tag version 1..."
+echo "Waiting for Docker to build image..."
 docker build -t billups:1 .
 
-echo "Starting the application..."
+echo "Starting the Application with Docker..."
 docker run billups

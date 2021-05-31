@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
-import Hero from "components/hero";
-import Card from "components/card";
-import system, { getGames } from "services/systemService";
-import User from "components/user";
-import ButtonPrimary from "components/buttonPrimary";
 import { toast } from "react-toastify";
+
+import ButtonPrimary from "components/buttonPrimary";
+import Card from "components/card";
+import Hero from "components/hero";
+import User from "components/user";
+import { getGames, resetGames } from "services/systemService";
 
 function Home() {
   const [scores, setScores] = useState([]);
@@ -21,8 +21,8 @@ function Home() {
     setScores(data);
   }
 
-  async function handleReset() {
-    system.resetGames();
+  function handleReset() {
+    resetGames();
     toast("Games cleared!");
     populateScores();
   }

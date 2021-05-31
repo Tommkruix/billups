@@ -1,6 +1,18 @@
 import React from "react";
+import Lottie from "react-lottie";
 import { motion } from "framer-motion";
-import Cta from "components/cta";
+
+import animationData from "../assets/lotties/features.json";
+import Card from "components/card";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 function Feature() {
   return (
@@ -11,7 +23,15 @@ function Feature() {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Cta />
+      <Card addClass="right-2">
+        <Lottie
+          options={defaultOptions}
+          height={400}
+          width={400}
+          isStopped={false}
+          isPaused={false}
+        />
+      </Card>
     </motion.div>
   );
 }

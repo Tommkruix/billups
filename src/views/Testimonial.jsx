@@ -1,7 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import Cta from "components/cta";
+import Card from "components/card";
+import Lottie from "react-lottie";
+
+import animationData from "../assets/lotties/review.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 function Testimonial() {
   return (
@@ -12,7 +24,15 @@ function Testimonial() {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Cta />
+      <Card>
+        <Lottie
+          options={defaultOptions}
+          height={400}
+          width={400}
+          isStopped={false}
+          isPaused={false}
+        />
+      </Card>
     </motion.div>
   );
 }

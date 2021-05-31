@@ -167,7 +167,7 @@ const Header = () => {
       </header>
 
       {/* Mobile Navigation Started */}
-      <nav className="fixed lg:hidden bottom-14 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
+      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-8 shadow-t ">
         <div className="bg-white-500 sm:px-3 dark:bg-black-100">
           <ul className="flex w-full justify-between items-center text-black-500">
             <Link
